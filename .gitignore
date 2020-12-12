@@ -115,3 +115,5 @@ work_dirs/
 
 # Pytorch
 *.pth
+
+demo/Wrist_1013_take_009_resized/

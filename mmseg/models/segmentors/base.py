@@ -9,6 +9,7 @@ import torch
 import torch.distributed as dist
 import torch.nn as nn
 from mmcv.runner import auto_fp16
+import cv2
 
 
 class BaseSegmentor(nn.Module):
@@ -242,18 +243,29 @@ class BaseSegmentor(nn.Module):
                     0, 255, size=(len(self.CLASSES), 3))
             else:
                 palette = self.PALETTE
+
         palette = np.array(palette)
         assert palette.shape[0] == len(self.CLASSES)
         assert palette.shape[1] == 3
         assert len(palette.shape) == 2
         color_seg = np.zeros((seg.shape[0], seg.shape[1], 3), dtype=np.uint8)
+        '''
         for label, color in enumerate(palette):
             color_seg[seg == label, :] = color
         # convert to BGR
         color_seg = color_seg[..., ::-1]
-
+        
         img = img * 0.5 + color_seg * 0.5
         img = img.astype(np.uint8)
+        '''
+
+        color_seg[seg == 12, :] = np.array([255, 255, 255])
+
+        img = color_seg.astype(np.uint8)
+        #img = cv2.imread(img)
+        #img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+
+
         # if out_file specified, do not show image in window
         if out_file is not None:
             show = False
