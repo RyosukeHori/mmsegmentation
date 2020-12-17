@@ -7,6 +7,7 @@ from PIL import Image
 def main():
     parser = ArgumentParser()
     parser.add_argument('img', help='Image file')
+    parser.add_argument('outdir', help='Output Dir')
     parser.add_argument('config', help='Config file')
     parser.add_argument('checkpoint', help='Checkpoint file')
     parser.add_argument(
@@ -30,8 +31,8 @@ def main():
     # save result
     img = Image.fromarray(ret_result(model, args.img, result, get_palette(args.palette)))
     # img.show()
-    out_im = './demo/3_e2c_seg.png'
-    img.save(out_im)
+
+    img.save(args.outdir)
 
 
 if __name__ == '__main__':
