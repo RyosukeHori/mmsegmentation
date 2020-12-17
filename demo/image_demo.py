@@ -7,7 +7,6 @@ from PIL import Image
 def main():
     parser = ArgumentParser()
     parser.add_argument('img', help='Image file')
-    parser.add_argument('outdir', help='Output Dir')
     parser.add_argument('config', help='Config file')
     parser.add_argument('checkpoint', help='Checkpoint file')
     parser.add_argument(
@@ -16,6 +15,7 @@ def main():
         '--palette',
         default='cityscapes',
         help='Color palette used for segmentation map')
+    parser.add_argument('--outdir', help='Output Dir')
     args = parser.parse_args()
 
     # build the model from a config file and a checkpoint file
