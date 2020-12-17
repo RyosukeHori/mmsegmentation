@@ -117,3 +117,5 @@ work_dirs/
 *.pth
 
 demo/Wrist_1013_take_009_resized/
+demo/Wrist_1013_take_009
+demo/before_resized
