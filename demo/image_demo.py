@@ -32,7 +32,6 @@ def main():
     # img.show()
     out_im = './demo/3_e2c_seg.png'
     img.save(out_im)
-    print(out_im)
 
 
 if __name__ == '__main__':
