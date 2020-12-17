@@ -130,5 +130,5 @@ def ret_result(model, img, result, palette=None):
     if hasattr(model, 'module'):
         model = model.module
     img = model.show_result(img, result, palette=palette, show=False)
-    img = mmcv.bgr2gray(img)
+    #img = mmcv.bgr2gray(img)
     return img
