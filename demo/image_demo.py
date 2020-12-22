@@ -3,6 +3,8 @@ from argparse import ArgumentParser
 from mmseg.apis import inference_segmentor, init_segmentor, show_result_pyplot, ret_result
 from mmseg.core.evaluation import get_palette
 from PIL import Image
+import py360convert
+
 
 def main():
     parser = ArgumentParser()
@@ -20,19 +22,11 @@ def main():
 
     # build the model from a config file and a checkpoint file
     model = init_segmentor(args.config, args.checkpoint, device=args.device)
-    '''
+
     # test a single image
     result = inference_segmentor(model, args.img)
     # show the results
     show_result_pyplot(model, args.img, result, get_palette(args.palette))
-    '''
-
-    result = inference_segmentor(model, args.img)
-    # save result
-    img = Image.fromarray(ret_result(model, args.img, result, get_palette(args.palette)))
-    # img.show()
-
-    img.save(args.outdir)
 
 
 if __name__ == '__main__':

@@ -250,6 +250,7 @@ class BaseSegmentor(nn.Module):
         assert len(palette.shape) == 2
         color_seg = np.zeros((seg.shape[0], seg.shape[1], 3), dtype=np.uint8)
 
+        '''
         # ------
         for label, color in enumerate(palette):
             color_seg[seg == label, :] = color
@@ -264,7 +265,7 @@ class BaseSegmentor(nn.Module):
         img = color_seg.astype(np.uint8)
         #img = cv2.imread(img)
         #img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-        '''
+
 
         # if out_file specified, do not show image in window
         if out_file is not None:

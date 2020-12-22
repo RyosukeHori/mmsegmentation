@@ -23,16 +23,18 @@ def main():
     model = init_segmentor(args.config, args.checkpoint, device=args.device)
 
     width, height = 224, 224
-    for i in range(0, 9165):
+    for i in range(0, 1):
         # test a single image
-        img_path = './demo/Wrist_1013_take_009_resized/{:06d}.png'.format(i)
+        #img_path = './demo/Wrist_1013_take_009_resized/{:06d}.png'.format(i)
+        img_path = './demo/1_e2c.png'.format(i)
         result = inference_segmentor(model, img_path)
 
         # save result
         img = Image.fromarray(ret_result(model, img_path, result, get_palette(args.palette)))
         #img.show()
         img2 = img.resize((width, height))
-        img2.save('./demo/Wrist_009_Mask/{:06d}.png'.format(i))
+        #img2.save('./demo/Wrist_009_Mask/{:06d}.png'.format(i))
+        img2.save('./demo/1_e2c_col.png'.format(i))
         print('{:06d}.png saved'.format(i))
 
 if __name__ == '__main__':
