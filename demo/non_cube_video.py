@@ -29,9 +29,9 @@ def main():
     model = init_segmentor(args.config, args.checkpoint, device=args.device)
 
     res_width, res_height = 224, 224
-    for j in range(0, 9165):
+    for j in range(0, 9924):
         # test a single image
-        img_path = './demo/Wrist_1013_take_009/{:06d}.png'.format(j)
+        img_path = './demo/1013_take_002/{:06d}.png'.format(j)
         orig_img = np.array(Image.open(img_path))
         height, width, _ = orig_img.shape
 
@@ -58,7 +58,7 @@ def main():
         out = Image.fromarray(AND_im)
         # img.show()
         out2 = out.resize((res_width, res_height))
-        out2.save('./demo/Wrist_1013_take_009_resized/{:06d}.png'.format(j))
+        out2.save('./demo/1013_take_002_equi/{:06d}.png'.format(j))
         # img2.save('./demo/1_e2c_col.png'.format(i))
         print('{:06d}.png saved'.format(j))
 
