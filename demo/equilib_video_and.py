@@ -74,7 +74,7 @@ def main():
         "yaw": 0,  # horizontal
     }
 
-    for j in range(5787, 9166):
+    for j in range(8196, 9166):
         # test a single image
         #img_path = './demo/OFtest/{:06d}.png'.format(j)
         img_path = './demo/1013_take_009/{:06d}.png'.format(j)
@@ -83,7 +83,7 @@ def main():
         AND_im = np.zeros((height, width)).astype(np.uint8)
 
         # scroll by 180 deg
-        num_rot = 360 // 120
+        num_rot = 360 // 180
         for i in range(num_rot):
             OR_im = np.zeros((height, width)).astype(np.uint8)
             # scroll image
@@ -227,7 +227,7 @@ def main():
         #out.show()
         out2 = out.resize((res_width, res_height))
         #out2.save('./demo/OFtest_equilib2/{:06d}.png'.format(j))
-        out2.save('./demo/1013_take_009_equilib2/{:06d}.png'.format(j))
+        out2.save('./demo/1013_take_009_equilib3/{:06d}.png'.format(j))
         #img2.save('./demo/1_e2c_col.png'.format(i))
         print('{:06d}.png saved'.format(j))
 

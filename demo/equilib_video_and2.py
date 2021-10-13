@@ -33,7 +33,7 @@ def main():
 
     res_width, res_height = 224, 224
 
-    img_path = '/home/hori/Downloads/0121_take_001/000000.png'
+    img_path = '/home/hori/Downloads/0121_take/000000.png'
     #img_path = './demo/1013_take_009/000000.png'
     orig_img = np.array(Image.open(img_path))
     height, width, _ = orig_img.shape
@@ -76,14 +76,14 @@ def main():
 
     for j in range(0, 1390):
         # test a single image
-        img_path = '/home/hori/Downloads/0121_take_001/{:06d}.png'.format(j)
+        img_path = '/home/hori/Downloads/0121_take/{:06d}.png'.format(j)
         #img_path = './demo/1013_take_009/{:06d}.png'.format(j)
         orig_img = np.array(Image.open(img_path))
 
         AND_im = np.zeros((height, width)).astype(np.uint8)
 
         # scroll by 180 deg
-        num_rot = 360 // 120
+        num_rot = 360 // 180
         for i in range(num_rot):
             OR_im = np.zeros((height, width)).astype(np.uint8)
             # scroll image
@@ -212,7 +212,7 @@ def main():
                 AND_im = cv2.bitwise_and(AND_im, OR_im)
 
             '''
-            ANDim_path = os.getcwd() + "/demo/tmp/AND_im.png"
+            ANDim_path = os.getcwd() + "/demo/:tmp/AND_im.png"
             out = Image.fromarray(AND_im)
             out.save(ANDim_path)
             '''
@@ -222,7 +222,7 @@ def main():
         out.save('./demo/tmp/extract.png')
         #out.show()
         out2 = out.resize((res_width, res_height))
-        out2.save('/home/hori/Downloads/0121_take_001_equilib/{:06d}.png'.format(j))
+        out2.save('./demo/0121_take_equilib2/{:06d}.png'.format(j))
         #out2.save('./demo/1013_take_009_equilib2/{:06d}.png'.format(j))
         #img2.save('./demo/1_e2c_col.png'.format(i))
         print('{:06d}.png saved'.format(j))
