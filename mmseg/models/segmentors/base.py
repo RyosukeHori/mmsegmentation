@@ -252,20 +252,20 @@ class BaseSegmentor(nn.Module):
 
 
         # ------
-        for label, color in enumerate(palette):
-            color_seg[seg == label, :] = color
-        # convert to BGR
-        color_seg = color_seg[..., ::-1]
-        
-        img = img * 0.5 + color_seg * 0.5
-        img = img.astype(np.uint8)
+        # for label, color in enumerate(palette):
+        #     color_seg[seg == label, :] = color
+        # # convert to BGR
+        # color_seg = color_seg[..., ::-1]
+        #
+        # img = img * 0.5 + color_seg * 0.5
+        # img = img.astype(np.uint8)
         # ------
-        '''
+
         color_seg[seg == 12, :] = np.array([255, 255, 255])
         img = color_seg.astype(np.uint8)
         #img = cv2.imread(img)
         #img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
-        '''
+
 
         # if out_file specified, do not show image in window
         if out_file is not None:
