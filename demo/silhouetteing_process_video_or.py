@@ -76,7 +76,7 @@ def main():
         print(take)
         video_path = './video/' + take + '.mp4'
         cap = cv2.VideoCapture(video_path)
-        img_path = './silhouette_OR/' + take
+        img_path = './silhouette_OR_swin/' + take
         if not os.path.exists(img_path):
             os.makedirs(img_path)
 
@@ -217,3 +217,4 @@ if __name__ == '__main__':
     main()
 
 #demo/Image/1.png configs/hrnet/fcn_hr48_512x512_160k_ade20k.py  checkpoints/fcn_hr48_512x512_160k_ade20k_20200614_214407-a52fc02c.pth --device cuda:0 --palette ade
+#demo/Image/1.png configs/swin/upernet_swin_base_patch4_window12_512x512_160k_ade20k_pretrain_384x384_22K.py checkpoints/upernet_swin_base_patch4_window12_512x512_160k_ade20k_pretrain_384x384_22K_20210531_125459-429057bf.pth --device cuda:0  --palette ade

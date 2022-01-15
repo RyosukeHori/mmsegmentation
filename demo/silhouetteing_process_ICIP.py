@@ -74,7 +74,7 @@ def main():
         "yaw": 0,  # horizontal
     }
 
-    for j in range(84, 9166):
+    for j in range(545, 9166):
         # test a single image
         #img_path = './demo/OFtest/{:06d}.png'.format(j)
         img_path = './demo/1013_take_009/{:06d}.png'.format(j)

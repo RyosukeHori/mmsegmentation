@@ -70,28 +70,33 @@ def main():
         "yaw": 0,  # horizontal
     }
 
-    #takes = ['0514_take_003', '0514_take_011', '0514_take_012', '0514_take_015',  '0514_take_020']
-    takes = ['0514_take_020']
+    takes = ['1013_take_002', '1013_take_003', '1013_take_008', '1013_take_009', '0514_take_003', '0514_take_011',
+             '0514_take_012', '0514_take_015',  '0514_take_020']
+    # takes = ['0514_take_020']
     for take in takes:
         print(take)
         video_path = './video/' + take + '.mp4'
         cap = cv2.VideoCapture(video_path)
-        img_path = './silhouette_AND/' + take
+        img_path = './silhouette_AND_swin_NoRot/' + take
         if not os.path.exists(img_path):
             os.makedirs(img_path)
 
         if not cap.isOpened():
             return
 
-        n = 0
+        n = -1
         while True:
             ret, frame = cap.read()
             if not ret:
                 break
+            n += 1
+            if n < 0:
+                continue
             orig_img = frame
             AND_im = np.zeros((height, width)).astype(np.uint8)
 
-            num_rot = 360 // 120
+            #num_rot = 360 // 120
+            num_rot = 1
             for i in range(num_rot):
                 OR_im = np.zeros((height, width)).astype(np.uint8)
                 # scroll image
@@ -210,10 +215,10 @@ def main():
             out2 = out.resize((res_width, res_height))
             out2.save(img_path + '/{:06d}.png'.format(n))
             print('   {:06d}.png saved'.format(n))
-            n += 1
 
 
 if __name__ == '__main__':
     main()
 
 #demo/Image/1.png configs/hrnet/fcn_hr48_512x512_160k_ade20k.py  checkpoints/fcn_hr48_512x512_160k_ade20k_20200614_214407-a52fc02c.pth --device cuda:0 --palette ade
+#demo/Image/1.png configs/swin/upernet_swin_base_patch4_window12_512x512_160k_ade20k_pretrain_384x384_22K.py checkpoints/upernet_swin_base_patch4_window12_512x512_160k_ade20k_pretrain_384x384_22K_20210531_125459-429057bf.pth --device cuda:0  --palette ade
