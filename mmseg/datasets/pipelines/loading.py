@@ -1,3 +1,4 @@
+# Copyright (c) OpenMMLab. All rights reserved.
 import os.path as osp
 
 import mmcv
@@ -91,7 +92,7 @@ class LoadAnnotations(object):
     """Load annotations for semantic segmentation.
 
     Args:
-        reduct_zero_label (bool): Whether reduce all label value by 1.
+        reduce_zero_label (bool): Whether reduce all label value by 1.
             Usually used for datasets where 0 is background label.
             Default: False.
         file_client_args (dict): Arguments to instantiate a FileClient.
