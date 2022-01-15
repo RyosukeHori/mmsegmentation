@@ -70,12 +70,13 @@ def main():
         "yaw": 0,  # horizontal
     }
 
-    takes = ['1013_take_008', '0514_take_003', '0514_take_011', '0514_take_012', '0514_take_015',  '0514_take_020']
+    #takes = ['0514_take_003', '0514_take_011', '0514_take_012', '0514_take_015',  '0514_take_020']
+    takes = ['0514_take_020']
     for take in takes:
         print(take)
         video_path = './video/' + take + '.mp4'
         cap = cv2.VideoCapture(video_path)
-        img_path = './silhouette/' + take
+        img_path = './silhouette_AND/' + take
         if not os.path.exists(img_path):
             os.makedirs(img_path)
 
@@ -86,7 +87,7 @@ def main():
         while True:
             ret, frame = cap.read()
             if not ret:
-                return
+                break
             orig_img = frame
             AND_im = np.zeros((height, width)).astype(np.uint8)
 
